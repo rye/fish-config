@@ -62,5 +62,27 @@ function fish_prompt --description 'Write out the prompt'
 		set prompt_status ' ' (set_color $fish_color_status) "[" (printf "%02x" $last_status ) "]" "$normal"
 	end
 
-	echo -n -s (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (__fish_vcs_prompt) $normal $prompt_status " ⑆ "
+	set -l prompt_user
+	if [ "$USER" != "kristofer" ];
+		set prompt_user (set_color $fish_color_user) "$USER" $normal
+	end
+
+
+	set -l prompt_host
+	if [ (prompt_hostname) != "maero" ];
+		set prompt_host (set_color $fish_color_host) (prompt_hostname) $normal
+	end
+
+	set -l prompt_wai
+	if test "$prompt_user" != ""
+		if test "$prompt_host" != ""
+			set prompt_wai $prompt_user "@" $prompt_host
+		else
+			set prompt_wai $prompt_host
+		end
+	else
+		set prompt_wai $prompt_user
+	end
+
+	echo -n -s $prompt_wai ' ' (set_color $color_cwd) (prompt_pwd) $normal (__fish_vcs_prompt) $normal $prompt_status " ⑆ "
 end

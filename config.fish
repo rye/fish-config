@@ -7,8 +7,8 @@ switch (uname -s)
 			end
 		end
 
-		if not contains (ruby -rubygems -e 'puts Gem.user_dir')/bin $PATH
-			set -gx PATH (ruby -rubygems -e 'puts Gem.user_dir')/bin $PATH
+		if not contains (ruby -r rubygems -e 'puts Gem.user_dir')/bin $PATH
+			set -gx PATH (ruby -r rubygems -e 'puts Gem.user_dir')/bin $PATH
 		end
 	case "Linux"
 		set -gx PATH $HOME/.local/bin $PATH

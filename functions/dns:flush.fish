@@ -1,4 +1,3 @@
 function dns:flush --description 'Flush DNS (on macOS)'
-	echo "sudoing a killall on mDNSResponder..."
-	sudo killall -v -HUP mDNSResponder
+	sudo -p "(sudo) Enter your password to kill mDNSResponder with SIGHUP: " -k killall -v -HUP mDNSResponder
 end

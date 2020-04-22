@@ -6,7 +6,7 @@ function maybe_add_to_path
 	end
 end
 
-switch (uname -s)
+switch $platform
 	case "Darwin"
 		if test -d /Volumes/Tritium/Development/Android
 			set -gx ANDROID_HOME /Volumes/Tritium/Development/Android

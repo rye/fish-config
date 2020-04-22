@@ -46,4 +46,3 @@ if which gpg >/dev/null 2>&1; and which gpg-agent >/dev/null 2>&1
 end
 
 set -x -U GOPATH $HOME/.local/go
-

@@ -1,2 +1,5 @@
 # Ignore fishd swapfiles
 fishd.*
+
+# Ignore fish universal variable definitions
+fish_variables

@@ -39,7 +39,6 @@ end
 
 if which gpg >/dev/null 2>&1; and which gpg-agent >/dev/null 2>&1
 	if not test -n (echo (pgrep gpg-agent))
-		echo "[gpg] starting new daemon..."
 		eval (gpg-agent --daemon)
 	end
 

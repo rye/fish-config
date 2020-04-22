@@ -8,25 +8,17 @@ end
 
 switch $platform
 	case "Darwin"
-		if test -d /Volumes/Tritium/Development/Android
-			set -gx ANDROID_HOME /Volumes/Tritium/Development/Android
-			maybe_add_to_path $ANDROID_HOME/tools
-			maybe_add_to_path $ANDROID_HOME/platform-tools
+		for i in \
+			(brew --prefix ruby)/bin \
+			(brew --prefix python)/libexec/bin \
+			(brew --prefix coreutils)/libexec/gnubin
+			maybe_add_to_path $i
 		end
 	case "Linux"
 		set -gx C_INCLUDE_PATH $HOME/.local/include $C_INCLUDE_PATH
 		set -gx CPLUS_INCLUDE_PATH $HOME/.local/include $CPLUS_INCLUDE_PATH
 		set -gx LIBRARY_PATH $HOME/.local/lib $LIBRARY_PATH
 		set -gx PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig $PKG_CONFIG_PATH
-end
-
-if [ $platform = "Darwin" ]
-	for i in \
-		(brew --prefix ruby)/bin \
-		(brew --prefix python)/libexec/bin \
-		(brew --prefix coreutils)/libexec/gnubin
-		maybe_add_to_path $i
-	end
 end
 
 for directory in \

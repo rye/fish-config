@@ -23,6 +23,7 @@ end
 if [ $platform = "Darwin" ]
 	for i in \
 		(brew --prefix ruby)/bin \
+		(brew --prefix python)/libexec/bin \
 		(brew --prefix coreutils)/libexec/gnubin
 		maybe_add_to_path $i
 	end
